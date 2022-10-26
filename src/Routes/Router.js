@@ -15,7 +15,10 @@ export const router = createBrowserRouter([
         element: <Home />,
         loader: () => fetch("http://localhost:5000/courses"),
       },
-      { path: "/home", element: <Home /> },
+      {
+        path: "/home",
+        element: <Home />,
+      },
       {
         path: "/categories",
         element: <Categories />,
