@@ -11,9 +11,14 @@ import { AuthContext } from "../Context/AuthProvider";
 import { FaUser } from "react-icons/fa";
 
 function Header() {
-  const { user } = useContext(AuthContext);
-
+  const { user, logOut } = useContext(AuthContext);
   const [theme, setTheme] = useState(false);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
 
   // toggle theme
   const handleTheme = () => {
@@ -70,13 +75,34 @@ function Header() {
             </Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
+            <Nav.Link href="#deets">
+              {user?.uid ? (
+                <>
+                  <span>{user?.displayName}</span>
+                  <button
+                    onClick={handleLogout}
+                    className="ms-2 rounded text-primary"
+                  >
+                    Log Out
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link className="ms-2 rounded text-primary" to="/login">
+                    Login
+                  </Link>
+                  <Link className="ms-2 rounded text-primary" to="/signup">
+                    SignUp
+                  </Link>
+                </>
+              )}
+            </Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
-              {user.photoURL ? (
+              {user?.photoURL ? (
                 <Image
                   style={{ height: "30px" }}
                   roundedCircle
-                  src={user.photoURL}
+                  src={user?.photoURL}
                 ></Image>
               ) : (
                 <FaUser></FaUser>
