@@ -3,8 +3,23 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import "./Header.css";
+import { useEffect } from "react";
 
 function Header() {
+  const [theme, setTheme] = useState(false);
+  const handleTheme = () => {
+    setTheme(!theme);
+  };
+  useEffect(() => {
+    if (theme === true) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  });
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -32,10 +47,19 @@ function Header() {
                 All Courses
               </Link>
             </Nav.Link>
+
             <Nav.Link>
               <Link className="text-decoration-none text-white" to="/blog">
                 Blog
               </Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link className="text-decoration-none text-white" to="/blog">
+                FAQ
+              </Link>
+            </Nav.Link>
+            <Nav.Link>
+              <button onClick={handleTheme}>{theme ? "Light" : "Dark"}</button>
             </Nav.Link>
           </Nav>
           <Nav>

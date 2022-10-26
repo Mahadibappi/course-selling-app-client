@@ -5,7 +5,7 @@ function Home() {
   const courses = useLoaderData();
 
   return (
-    <div>
+    <div className="mt-3">
       {courses.map((course) => (
         <Courses key={course.id} course={course}></Courses>
       ))}
