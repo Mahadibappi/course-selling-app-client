@@ -3,9 +3,22 @@ import Button from "react-bootstrap/Button";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const CourseList = () => {
   const [course, setCourse] = useState([]);
+  const { loginProvider } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+  const handleGoogleSignin = () => {
+    loginProvider(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
+  };
   useEffect(() => {
     fetch("http://localhost:5000/single-category")
       .then((res) => res.json())
@@ -16,7 +29,10 @@ const CourseList = () => {
     <div>
       <div>
         <ButtonGroup vertical className="mt-3">
-          <Button className="btn-success btn-outline mb-2 rounded ">
+          <Button
+            onClick={handleGoogleSignin}
+            className="btn-success btn-outline mb-2 rounded "
+          >
             <FaGoogle /> SignIn With Google
           </Button>
           <Button className="btn-info btn-outline mb-2 rounded ">
