@@ -29,10 +29,12 @@ const CourseList = () => {
           All Courses <span className="text-info">{course.length}</span>{" "}
         </h3>
         {course.map((course) => (
-          <Link to={`${course.id}`} className="text-decoration-none">
-            <h5 className=" border rounded p-2" key={course.id}>
-              {course.name}
-            </h5>
+          <Link
+            key={course.id}
+            to={`${course.id}`}
+            className="text-decoration-none"
+          >
+            <h5 className=" border rounded p-2">{course.name}</h5>
           </Link>
         ))}
       </div>
