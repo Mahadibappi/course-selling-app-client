@@ -8,16 +8,18 @@ function Header() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand to="/">
-          <Image
-            className="me-2"
-            style={{ width: "30px" }}
-            rounded
-            src={
-              "https://www.pngitem.com/pimgs/m/292-2923379_undergraduate-education-logo-for-education-png-transparent-png.png"
-            }
-          ></Image>
-          Academia-IT
+        <Navbar.Brand>
+          <Link to="/" className="text-decoration-none text-white">
+            <Image
+              className="me-2"
+              style={{ width: "30px" }}
+              rounded
+              src={
+                "https://www.pngitem.com/pimgs/m/292-2923379_undergraduate-education-logo-for-education-png-transparent-png.png"
+              }
+            ></Image>
+            Academia-IT
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
