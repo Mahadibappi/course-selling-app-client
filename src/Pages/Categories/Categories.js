@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 function Categories() {
   const category = useLoaderData();
-  const { _id, title, img, Price } = category;
+  const { _id } = category;
 
   return (
     <div>
