@@ -10,7 +10,6 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Error from "../Pages/Error/Error";
 import PrivateRoute from "../Routes/PrivateRoute";
 import CheckOut from "../Pages/CheckOut/CheckOut";
-import Card from "../Pages/Card/Card";
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +20,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/courses"),
+        loader: () => fetch("https://edu-server-phi.vercel.app/courses"),
       },
       {
         path: "/home",
@@ -30,7 +29,7 @@ export const router = createBrowserRouter([
       {
         path: "/categories",
         element: <Categories />,
-        loader: () => fetch("http://localhost:5000/courses"),
+        loader: () => fetch("https://edu-server-phi.vercel.app/courses"),
       },
       {
         path: "/details/:id",
@@ -40,13 +39,13 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/courses/${params.id}`),
+          fetch(`https://edu-server-phi.vercel.app/courses/${params.id}`),
       },
       {
         path: "/checkout/:id",
         element: <CheckOut></CheckOut>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/courses/${params.id}`),
+          fetch(`https:/edu-server-phi.vercel.app//courses/${params.id}`),
       },
 
       {

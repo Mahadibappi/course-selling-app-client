@@ -20,7 +20,7 @@ const CourseList = () => {
       .catch((error) => console.log(error));
   };
   useEffect(() => {
-    fetch("http://localhost:5000/single-category")
+    fetch("https://edu-server-phi.vercel.app/single-category")
       .then((res) => res.json())
       .then((data) => setCourse(data));
   }, []);
