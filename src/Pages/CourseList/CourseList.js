@@ -47,7 +47,7 @@ const CourseList = () => {
         {course.map((course) => (
           <Link
             key={course.id}
-            to={`${course.id}`}
+            to={`/details/${course.id}`}
             className="text-decoration-none"
           >
             <h5 className=" border rounded p-2">{course.name}</h5>

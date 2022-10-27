@@ -17,7 +17,7 @@ function Details() {
         </Card.Text>
         <button className="btn btn-dark rounded">
           <Link className="text-decoration-none" to={`/details/${_id}`}>
-            Get Premium
+            check it out
           </Link>
         </button>
       </Card.Body>

@@ -7,10 +7,14 @@ import Home from "../Pages/Home/Home";
 import Details from "../Pages/Details/Details";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import Error from "../Pages/Error/Error";
+import CourseList from "../Pages/CourseList/CourseList";
+import PrivateRoute from "../Routes/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <Error />,
     element: <Main />,
     children: [
       {
@@ -25,17 +29,24 @@ export const router = createBrowserRouter([
       {
         path: "/categories",
         element: <Categories />,
+        loader: () => fetch("http://localhost:5000/courses"),
       },
       {
         path: "/details/:id",
-        element: <Details />,
+        element: (
+          <PrivateRoute>
+            <Details />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/courses/${params.id}`),
       },
+
       {
         path: "/blog",
         element: <Blog />,
       },
+
       {
         path: "/login",
         element: <Login />,

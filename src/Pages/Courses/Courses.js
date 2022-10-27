@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Courses({ course }) {
   const { _id, title, img, Price } = course;
-  console.log(course);
+
   return (
     <Card className="mb-3">
       <Card.Img style={{ height: "300px" }} variant="top" src={img} />
@@ -14,7 +14,7 @@ function Courses({ course }) {
         </Card.Text>
         <button className="btn btn-dark rounded">
           <Link className="text-decoration-none" to={`/details/${_id}`}>
-            See Details
+            Purchase Now
           </Link>
         </button>
       </Card.Body>
